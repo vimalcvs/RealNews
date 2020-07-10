@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-navbar color="secondary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Real News</ion-title>
+    </ion-navbar> 
+  
+  </ion-header>
+  
+  <ion-content parallax-header no-bounce class="bg-modal">
+    <div class="header-image"></div>
+    <div class="main-content" text-wrap text-center>
+        <div class="circular"><img src="./assets/imgs/logo2.png"></div>
+        <h2>{{name}}&nbsp;{{lname}}</h2>
+ 
+        <hr>
+        <ion-list no-lines>
+            <ion-item>
+                <ion-icon name="mail" color="secondary" item-start></ion-icon>
+                <p>Email</p>
+                {{email}}
+             </ion-item>
+          <!--   <ion-item>
+                <ion-icon item-start name="call" color="danger"></ion-icon>
+                <p>Mobile</p>
+                {{contact1}}
+              </ion-item> -->
+            <ion-item>
+                <ion-icon item-start name="cog" color="danger"></ion-icon>
+                <p>Change Password</p>
+                
+                <a button ion-button color="primary" item-end medium text-wrap  (click)="password()">Change Password</a>
+            </ion-item>
+           
+        </ion-list>
+    
+    </div>
+      
+  </ion-content>

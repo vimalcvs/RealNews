@@ -1,0 +1,54 @@
+page-video {
+  
+  .badges{
+      font-size: 14px;
+      line-height: 24px;
+  }
+  
+  ion-slide.swiper-slide {
+      align-items: flex-start;
+  }
+  ion-slides.slides {
+      height: auto;
+    }
+    
+    .swiper-pagination {
+      bottom: 0px;
+    }
+  hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 1em 0;
+      padding: 0; 
+  }
+  ion-scroll {
+      white-space: nowrap;
+      height: 200px
+    }
+    .logo{
+      max-width: 150px;
+      max-height: 200px;
+    }
+    .helper {
+      // margin: 10px;
+      display: inline-block;
+      height: 100%;
+      vertical-align: middle;
+  }
+   .marginleft{
+      margin-left: 11px;
+   }
+   .titlefont{
+     font-size:'1.46154em';
+     
+   }
+   .card-content-md{
+    padding: 5px;
+}
+.col{
+    padding: 0px;
+}
+  }
+  

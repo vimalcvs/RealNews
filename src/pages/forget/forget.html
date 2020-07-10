@@ -1,0 +1,34 @@
+<ion-content padding class="transparent-header" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  
+    <div padding>
+      <ion-row>
+        <ion-col>
+          <img class="logo" src="assets/imgs/logo2.png" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list inset class="no-border">
+            <ion-item>
+              <ion-label>Email Id</ion-label>
+              <ion-input type="text"  [(ngModel)]="email"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button class="login-button" (click)="forget(email)" >Send email</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col >
+          <div (click)="login()">
+            <span style="color:#d2001e">Login here</span>
+          </div>
+        </ion-col>
+      </ion-row>
+     
+    </div>
+  </ion-content>
+  

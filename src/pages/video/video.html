@@ -1,0 +1,101 @@
+<ion-header>
+ <ion-navbar color="secondary">
+      <ion-title>{{title1}}</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+    <div *ngIf='you==""'>
+    <video #videoPlayer  *ngIf="readyvid" [autoplay]="readyvid"  style="background-color: #fff;" poster="assets/imgs/logo2.png" tabindex="-1" style="transform: scale(1) rotate(0deg);width: 100%    !important;
+    height: auto   !important;" data-setup="{ 'aspectRatio': '16:9' }" controls preload="auto" controlsList="nodownload" >
+      <source [src]="my_url" type="video/mp4" label="Low" res="360"/>
+    </video></div>
+    <div  *ngIf='mylink==""'>
+    <iframe width="100%" height="315" [src]="urlpaste1()" frameborder="0" allowfullscreen></iframe>
+  </div> 
+  <div padding>
+        <h3>{{title1}}</h3>
+        <p [innerHTML]="title2"></p>
+        <ion-row>
+            <ion-col col-4>
+              <p class="badges">
+                <ion-icon name="calendar" style="font-size:1.4em"></ion-icon>&nbsp;{{title4 | date: 'mediumDate'}}
+              </p>
+            </ion-col>
+            <ion-col col-6 (click)="adfav()" *ngIf="!havefav">
+                <p class="badges">
+                  <ion-icon name="star" style="font-size:1.6em"></ion-icon>Add Reading List
+                </p>
+              </ion-col>
+              <ion-col col-6 *ngIf="havefav">
+                <p class="badges" *ngIf="loggedin">
+                  <ion-icon name="star" style="color:#E60606;font-size:1.6em"></ion-icon>Added Reading List
+                </p>
+              </ion-col>
+            <ion-col col-2 (click)="shareInfo()">
+              <p class="badges">
+                <ion-icon name="share" style="font-size:1.6em"></ion-icon>
+              </p>
+            </ion-col>
+          </ion-row>    
+      <br> <a button ion-button item-end medium icon clear (click)="login()" *ngIf="!loggedin">Please login For Comment
+        </a>
+        <ion-grid *ngIf="loggedin">
+          <ion-row>
+            <ion-col col-10>
+              <ion-item>
+                <ion-label stacked>Comment</ion-label>
+                <ion-input type="text" [(ngModel)]="posted"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col col-2><button ion-button icon-only (click)="postcomments(posted)">
+                <ion-icon name="send"></ion-icon>
+              </button></ion-col>
+          </ion-row>
+        </ion-grid>
+    
+        <ion-card class="pagedefaults" *ngFor="let comment of comments">
+          <ion-row>
+            <ion-col>
+              <button ion-button clear small color="dark" icon-left>
+                <ion-icon name='person'></ion-icon>{{comment.username}}
+              </button>
+            </ion-col>
+            <ion-col> <button ion-button clear small color="dark" icon-right>
+                <ion-icon name='calendar'></ion-icon>
+                &nbsp;{{comment.created_at | date: 'mediumDate'}}
+              </button></ion-col>
+          </ion-row>
+          <ion-card-content style="padding-top: 10px" class="pagedefaults">
+            <h2>{{comment.comment}}</h2>
+          </ion-card-content>
+        </ion-card>
+      <hr>
+      <p class="titlefont"> <b>Some Post that you might like</b> </p>
+      <hr>
+      <ion-card *ngFor="let product of banners1 | slice:0:10;">
+          <img src="http://rajattripathi.cf/{{product.image_mid}}"  *ngIf='product.post_type=="post"' (click)="article1(product.id,product.category_id)"/>
+          <img src="{{product.image_url}}" *ngIf='product.post_type=="video"' (click)="playvideo(product.id,product.category_id)">
+         <ion-card-content>
+          <h2 class="card-title" text-wrap>
+            <b>{{product.title}}</b>
+          </h2>
+        </ion-card-content>
+        <ion-row>
+          <ion-col>
+            <button ion-button clear small color="danger" icon-left *ngIf='product.post_type=="post"'>
+              <ion-icon name='bookmark'></ion-icon>
+            </button>
+            <button ion-button clear small color="danger" icon-left *ngIf='product.post_type=="video"'>
+                <ion-icon name='videocam'></ion-icon>
+              </button>
+          </ion-col>
+          <ion-col> <button ion-button clear small color="danger" icon-right>
+              <ion-icon name='calendar'></ion-icon>
+              &nbsp; {{product.created_at | date: 'mediumDate'}}
+            </button></ion-col>
+        </ion-row>
+      </ion-card>
+  
+        </div>
+  </ion-content>
+  

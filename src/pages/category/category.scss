@@ -1,0 +1,19 @@
+page-category {
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        width: 111px;
+        height: 80px;
+      }
+
+      .logo{
+     
+        border-radius: 2px;
+  border: 1px solid black;
+  /* padding: 2px;  */
+width: 200px;
+height: 150px; 
+      }
+      ion-scroll {
+        white-space: nowrap;
+        height: 40px
+      }
+}

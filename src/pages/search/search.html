@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Search</ion-title>
+  </ion-navbar>
+
+</ion-header>
+<ion-content class="pagedefaults">
+  <ion-searchbar [(ngModel)]="searchval" [showCancelButton]="shouldShowCancel" placeholder="Search your Article"
+  (ionInput)="loadsearchart(searchval)" (ionCancel)="onCancel($event)">
+</ion-searchbar>
+<hr>
+    <ion-item *ngFor="let content1 of banners" class="pagedefaults">
+        <ion-thumbnail item-start>
+            <img src="http://rajattripathi.cf/{{content1.image_mid}}" class=" logo"
+              alt="{{content1.cover}}"  *ngIf='content1.post_type=="post"'>
+              <img src="{{content1.image_url}}" *ngIf='content1.post_type=="video"'>
+          </ion-thumbnail>
+          <h2 (click)="article1(content1.id,content1.category_id)" text-wrap  *ngIf='content1.post_type=="post"'>{{content1.title}}</h2>
+          <h2 (click)="playvideo(content1.id,content1.category_id)" text-wrap  *ngIf='content1.post_type=="video"'>{{content1.title}}</h2>
+          <ion-row>
+              <ion-col col-4>
+                <button ion-button clear small color="danger" icon-left>
+                  <ion-icon name='videocam'  *ngIf='content1.post_type=="video"'></ion-icon>
+                  <ion-icon name='bookmark'  *ngIf='content1.post_type=="post"'></ion-icon>
+                </button>
+                
+              </ion-col>
+              <ion-col col-8> <button ion-button clear small color="danger" >
+                  <ion-icon name='calendar'></ion-icon>&nbsp;
+                   {{content1.created_at| date: 'mediumDate'}}
+                </button></ion-col>
+            </ion-row>
+      </ion-item> 
+
+
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button color="danger" ion-button icon menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col col-10>
+        <h4 class="centreme" style="color:white">{{catname}} </h4>
+      </ion-col>
+      <ion-col col-2>
+        <ion-buttons end>
+          <button (click)="searchvideos()" style="background-color: transparent;">
+            <ion-icon name="ios-search" style="color: white;font-size: 28px;
+                    padding-top: 14px;padding-right: 3px
+                "></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar *ngIf="isOn" [(ngModel)]="searchval" (change)="searchvideos(searchval)"></ion-searchbar>
+
+  <ion-scroll scrollX="true" *ngIf="readyepisode">
+    <span *ngFor="let content of tags1">
+      <button ion-button size="small" (click)="sub(content.id,content.name)">{{content.name}}</button>
+    </span>
+  </ion-scroll>
+
+
+  <ion-item *ngFor="let content1 of category1" class="pagedefaults">
+    <ion-thumbnail item-start>
+      <img src="http://rajattripathi.cf/{{content1.image_mid}}" class=" logo" alt="{{content1.cover}}" *ngIf='content1.post_type=="post"'>
+      <img src="{{content1.image_url}}" *ngIf='content1.post_type=="video"'>
+    </ion-thumbnail>
+    <h2 (click)="article1(content1.id,content1.category_id)" text-wrap *ngIf='content1.post_type=="post"'>
+      {{content1.title}}</h2>
+    <h2 (click)="playvideo(content1.id,content1.category_id)" text-wrap *ngIf='content1.post_type=="video"'>
+      {{content1.title}}</h2>
+    <ion-row>
+      <ion-col col-4>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='videocam' *ngIf='content1.post_type=="video"'></ion-icon>
+          <ion-icon name='bookmark' *ngIf='content1.post_type=="post"'></ion-icon>
+        </button>
+
+      </ion-col>
+      <ion-col col-8> <button ion-button clear small color="danger">
+          <ion-icon name='calendar'></ion-icon>&nbsp;
+          {{content1.created_at| date: 'mediumDate'}}
+        </button></ion-col>
+    </ion-row>
+  </ion-item>
+  <ion-item *ngFor="let content1 of article2" class="pagedefaults">
+    <ion-thumbnail item-start>
+      <img src="http://rajattripathi.cf/{{content1.image_mid}}" class=" logo" alt="{{content1.cover}}" *ngIf='content1.post_type=="post"'>
+      <img src="{{content1.image_url}}" *ngIf='content1.post_type=="video"'>
+    </ion-thumbnail>
+    <h2 (click)="article1(content1.id,content1.category_id)" text-wrap *ngIf='content1.post_type=="post"'>
+      {{content1.title}}</h2>
+    <h2 (click)="playvideo(content1.id,content1.category_id)" text-wrap *ngIf='content1.post_type=="video"'>
+      {{content1.title}}</h2>
+    <ion-row>
+      <ion-col col-4>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='videocam' *ngIf='content1.post_type=="video"'></ion-icon>
+          <ion-icon name='bookmark' *ngIf='content1.post_type=="post"'></ion-icon>
+        </button>
+
+      </ion-col>
+      <ion-col col-8> <button ion-button clear small color="danger">
+          <ion-icon name='calendar'></ion-icon>&nbsp;
+          {{content1.created_at| date: 'mediumDate'}}
+        </button></ion-col>
+    </ion-row>
+  </ion-item>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

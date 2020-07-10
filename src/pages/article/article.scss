@@ -1,0 +1,46 @@
+page-article {
+    .button-clear-md-dark{
+        font-size: 0.8em;
+    }
+    .card-content-md{
+        padding: 5px;
+    }
+    .col{
+        padding: 0px;
+    }
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        width: 111px;
+        height: 80px;
+      }
+      .item-ios ion-thumbnail ion-img, .item-ios ion-thumbnail img{
+        width: 111px;
+        height: 80px;
+      }
+      .logo{
+     
+        border-radius: 2px;
+  border: 1px solid black;
+
+width: 200px;
+height: 150px; 
+      }
+      .myCard{
+        position:relative;
+      
+      }
+      
+
+    ion-scroll {
+      white-space: nowrap;
+      height: 10px
+    }
+    .swiper-slide{
+      height:100%;
+    }
+    .swiper-container{
+      height: 35%;
+    } 
+    ion-slides{
+      display: contents;
+    }
+}

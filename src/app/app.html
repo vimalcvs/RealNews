@@ -1,0 +1,49 @@
+<ion-menu [content]="content">
+    <ion-content padding class="transparent-header" [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+
+        <img src="assets/imgs/logo2.png" style="height: 12vh;
+        width: auto;
+        margin: auto;
+        display: block;"><br>
+        <hr style="background-color:black;">
+      <!--   <h2 *ngIf="loggedin" style="color:white">Hi {{name}}&nbsp;{{lname}}</h2> -->
+        <ion-list>
+
+          <ion-item *ngFor="let item of category"  (click)="openCategoryPage(item.id,item.name)" menuClose>
+            {{item.name}}
+          </ion-item>
+         <!--  <ion-item (click)="poll()" menuClose>
+          
+              <h2 style="color:white">Poll</h2>
+            </ion-item> -->
+          <ion-item-divider style="background-color:black;color: white ">Account</ion-item-divider>
+          <ion-item *ngIf="!loggedin" (click)="login()" menuClose>
+            <!-- <ion-icon name="log-in" item-left large></ion-icon> -->
+            <h2>Login</h2>
+           <!--  <p>Using email and password</p> -->
+          </ion-item>
+    
+          <ion-item  *ngIf="loggedin" (click)="logout()" menuClose>
+            <!-- <ion-icon name="log-out" item-left large></ion-icon> -->
+            <h2>Logout</h2>
+            
+          </ion-item>
+          <ion-item *ngIf="loggedin" (click)="profile()" menuClose>
+           <!--  <ion-icon name="person" item-left large></ion-icon> -->
+            <h2>Profile</h2>
+          
+            </ion-item>
+            <ion-item  (click)="about()" menuClose>
+                <!--  <ion-icon name="person" item-left large></ion-icon> -->
+                 <h2>About Us</h2>
+               </ion-item>
+          <ion-item  (click)="contact()" menuClose>
+              <!--  <ion-icon name="person" item-left large></ion-icon> -->
+               <h2>Contact Us</h2>
+             </ion-item>
+        </ion-list>
+      </ion-content>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

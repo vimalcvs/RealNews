@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-buttons start>
+      <button color="danger" ion-button icon menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col col-10>
+        <h4 class="centreme" style="color:white"> Your Added List </h4>
+      </ion-col>
+      <ion-col col-2>
+        <ion-buttons end>
+          <button (click)="searchvideos()" style="background-color: transparent;">
+            <ion-icon name="ios-search" style="color: white;font-size: 28px;
+                    padding-top: 14px;padding-right: 3px
+                "></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card *ngIf="!loggedin" padding>
+    <br><br><br><br>
+    <h2 style="text-align: center"><b>Welcome To Real News Network</b></h2>
+    <ion-card-content>
+      <h2 style="text-align: center">Browse News, and then add them to your Reading List to save and Read Later. </h2>
+    </ion-card-content>
+    <h3 style="color:#E60606;text-align: center">Please Login To Access Your Saved Reading List</h3>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  </ion-card>
+
+  <ion-item *ngFor="let content1 of banner" class="pagedefaults">
+    <ion-thumbnail item-start>
+      <img src="http://rajattripathi.cf/{{content1.image_mid}}" class=" logo" alt="{{content1.cover}}"
+        *ngIf='content1.post_type=="post"'>
+      <img src="{{content1.image_url}}" *ngIf='content1.post_type=="video"'>
+    </ion-thumbnail>
+    <button ion-button icon-only item-end clear (click)="presentActionSheet(content1.RID,content1.title)">
+      <ion-icon name="more"></ion-icon>
+    </button>
+    <h2 (click)="article1(content1.id,content1.category_id)" text-wrap *ngIf='content1.post_type=="post"'>
+      {{content1.title.substr(0, 20) + '...'}}</h2>
+    <h2 (click)="playvideo(content1.id,content1.category_id)" text-wrap *ngIf='content1.post_type=="video"'>
+      {{content1.title.substr(0, 20) + '...'}}</h2>
+
+    <ion-row>
+      <ion-col col-4>
+        <button ion-button clear small color="danger" icon-left>
+          <ion-icon name='videocam' *ngIf='content1.post_type=="video"'></ion-icon>
+          <ion-icon name='bookmark' *ngIf='content1.post_type=="post"'></ion-icon>
+        </button>
+
+      </ion-col>
+      <ion-col col-8> <button ion-button clear small color="danger">
+          <ion-icon name='calendar'></ion-icon>&nbsp;
+          {{content1.created_at| date: 'mediumDate'}}
+        </button></ion-col>
+    </ion-row>
+
+  </ion-item>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+</ion-content>

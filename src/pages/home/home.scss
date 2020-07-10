@@ -1,0 +1,55 @@
+page-home {
+  
+        .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+            width: 111px;
+            height: 80px;
+          }
+          .item-ios ion-thumbnail ion-img, .item-ios ion-thumbnail img{
+            width: 111px;
+            height: 80px;
+          }
+          .logo{
+         
+            border-radius: 2px;
+      border: 1px solid black;
+    
+    width: 200px;
+    height: 150px; 
+          }
+          .myCard{
+            position:relative;
+          
+          }
+          
+          .myOverlay{
+              width: 100%;
+              height: 60px;
+              position: absolute;
+              z-index: 50;
+              bottom: 0px;
+              opacity: 0.9;
+              background: rgb(73, 72, 72);
+              color: white;
+          
+          }
+          #notification-button {            
+            position: relative;
+            width: 42px;
+            top:1px;
+            right: 1px;
+            overflow: visible!important;
+        }
+
+
+   #notifications-badge {
+            background-color: black;
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            border-radius: 100%;
+        }
+        ion-scroll {
+          white-space: nowrap;
+          height: 40px
+        }
+}
